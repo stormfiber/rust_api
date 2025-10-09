@@ -1,4 +1,11 @@
-<h1 align="center"> Template For Building Rest APIs With Rust </h1>
+<h1 align="center"> Rust API
+
+Template For Building Rest APIs With Rust
+     
+![Rust](https://img.shields.io/badge/rust-stable-brightgreen)
+![Actix Web](https://img.shields.io/badge/framework-actix_web-blue)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+</h1>
 
 ## Getting Started
 
