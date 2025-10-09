@@ -1,18 +1,28 @@
-use actix_web::{App, HttpServer, middleware};
+use actix_web::{App, HttpServer, middleware::Logger};
+use actix_files::Files;
+
 mod routes;
-mod middleware as my_middleware;
+mod middleware;
+mod utils;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    let port = std::env::var("PORT").unwrap_or_else(|_| "3000".to_string());
+    env_logger::init();
+
+    // Start keep-alive ping in background
+    tokio::spawn(utils::keep_alive());
 
     HttpServer::new(|| {
         App::new()
-            .wrap(middleware::Logger::default())
-            .wrap(my_middleware::cache::CacheMiddleware)
+            .wrap(Logger::default())
+            // Custom error handlers
+            .wrap(middleware::error_handlers())
+            // Static files
+            .service(Files::new("/public", "./public").show_files_listing())
+            // Register modular routes
             .configure(routes::register_routes)
     })
-    .bind(("0.0.0.0", port.parse().unwrap()))?
+    .bind(("127.0.0.1", 3000))?
     .run()
     .await
 }
