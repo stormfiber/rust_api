@@ -4,6 +4,11 @@ pub mod url;
 pub mod image;
 pub mod canvas;
 pub mod cards;
+pub mod health;
+pub mod auth;
+pub mod batch;
+pub mod metrics;
+pub mod docs;
 
 use actix_web::web;
 
@@ -14,6 +19,11 @@ pub fn register_routes(cfg: &mut web::ServiceConfig) {
     image::register(cfg);
     canvas::register(cfg);
     cards::register(cfg);
+    health::register(cfg);
+    auth::register(cfg);
+    batch::register(cfg);
+    metrics::register(cfg);
+    docs::register(cfg);
 }
 
 #[cfg(test)]

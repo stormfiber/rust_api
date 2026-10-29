@@ -13,9 +13,12 @@ reqwest = { version = "0.12", default-features = false, features = ["json", "rus
 lazy_static = "1.4"
 env_logger = "0.11.8"
 qrcode = "0.14.1"
-image = "0.25.8"
+image = { version = "0.25.8", features = ["jpeg", "png", "webp"] }
 imageproc = "0.24"
 rusttype = "0.8"
 base64 = "0.22.1"
 actix-multipart = "0.8"
 futures-util = "0.3"
+redis = { version = "0.25", features = ["tokio-comp"] }
+jsonwebtoken = "9.2"
+prometheus = "0.13"

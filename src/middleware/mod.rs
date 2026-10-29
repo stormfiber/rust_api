@@ -8,6 +8,10 @@ use actix_web::{
 };
 use serde_json::json;
 
+pub mod api_key;
+pub mod rate_limit;
+pub mod metrics_timer;
+
 pub fn error_handlers<B: 'static>() -> ErrorHandlers<B> {
     ErrorHandlers::new()
         .handler(StatusCode::NOT_FOUND, not_found)
