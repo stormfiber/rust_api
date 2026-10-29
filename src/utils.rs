@@ -1,5 +1,7 @@
 use std::time::Duration;
 
+pub mod image;
+
 pub async fn keep_alive() {
     let url = "https://discardapi.dpdns.org";
     let client = reqwest::Client::new();

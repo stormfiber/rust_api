@@ -9,9 +9,13 @@ actix-files = "0.6"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 tokio = { version = "1.47", features = ["rt-multi-thread", "macros"] }
-reqwest = { version = "0.12", features = ["json"] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls", "blocking"] }
 lazy_static = "1.4"
 env_logger = "0.11.8"
 qrcode = "0.14.1"
 image = "0.25.8"
+imageproc = "0.24"
+rusttype = "0.8"
 base64 = "0.22.1"
+actix-multipart = "0.8"
+futures-util = "0.3"

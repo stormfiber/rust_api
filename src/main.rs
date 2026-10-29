@@ -1,6 +1,7 @@
 use actix_web::{App, HttpServer, middleware::Logger};
 use actix_files::Files;
 
+mod config;
 mod routes;
 mod middleware;
 mod utils;
@@ -9,10 +10,12 @@ mod utils;
 async fn main() -> std::io::Result<()> {
     env_logger::init();
 
+    let config = config::Config::from_env();
+
     // Start keep-alive ping in background
     tokio::spawn(utils::keep_alive());
 
-    HttpServer::new(|| {
+    HttpServer::new(move || {
         App::new()
             .wrap(Logger::default())
             // Custom error handlers
@@ -22,7 +25,7 @@ async fn main() -> std::io::Result<()> {
             // Register modular routes
             .configure(routes::register_routes)
     })
-    .bind(("127.0.0.1", 3000))?
+    .bind(config.addr())?
     .run()
     .await
 }
