@@ -9,6 +9,7 @@ pub mod auth;
 pub mod batch;
 pub mod metrics;
 pub mod docs;
+pub mod scrape;
 
 use actix_web::web;
 
@@ -24,6 +25,7 @@ pub fn register_routes(cfg: &mut web::ServiceConfig) {
     batch::register(cfg);
     metrics::register(cfg);
     docs::register(cfg);
+    scrape::register(cfg);
 }
 
 #[cfg(test)]

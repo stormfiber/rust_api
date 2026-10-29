@@ -22,3 +22,6 @@ futures-util = "0.3"
 redis = { version = "0.25", features = ["tokio-comp"] }
 jsonwebtoken = "9.2"
 prometheus = "0.13"
+scraper = "0.18"
+regex = "1.13"
+urlencoding = "2.1"
